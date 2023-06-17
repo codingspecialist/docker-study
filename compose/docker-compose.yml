@@ -1,0 +1,33 @@
+version: '3'
+services:
+  db:
+    build:
+      context: ./db
+      dockerfile: Dockerfile-db
+    ports:
+      - 3306:3306
+    volumes:
+      - ./db/store:/var/lib/mysql
+    networks:
+      - network
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile-server
+    restart: always
+    ports:
+      - 8080:8080 
+    depends_on:
+      - db
+    # 이 부분을 도커파일에 작성하지 않는 이유는 host name인 my_db_app (도커 컴포즈 서비스 이름)을 도커파일에서는 ip로 변경해주지 못함
+    # 실행시에 ip로 컨버팅해주는 기능을 이용하기 위해 여기 작성
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/metadb?useSSL=false&serverTimezone=UTC&useLegacyDatetimeCode=false&allowPublicKeyRetrieval=true
+      SPRING_DATASOURCE_DRIVER: com.mysql.cj.jdbc.Driver
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root1234
+    networks:
+      - network
+networks:                                                                                                                                                                                                       
+  network:
+
