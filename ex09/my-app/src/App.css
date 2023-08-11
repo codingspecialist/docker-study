@@ -1,0 +1,10 @@
+h1 {
+  color: red;
+}
+
+.product-card {
+  border: 1px solid black;
+  height: 100px;
+  margin-bottom: 10px;
+  box-shadow: 0 5px 5px 0 black;
+}
