@@ -3,10 +3,10 @@ server:
 
 spring:
   datasource:
-    username: root
-    password: root1234
-    url: jdbc:mysql://localhost:3306/metadb
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: ${SPRING_DATASOURCE_URL}
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
+    driver-class-name: ${SPRING_DATASOURCE_DRIVER}
 
   jpa:
     hibernate:
