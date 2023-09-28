@@ -12,7 +12,7 @@ import shop.mtcoding.product.model.ProductRepository;
 @SpringBootApplication
 public class ProductApplication {
 
-	@Profile("dev") // dev 동작
+	@Profile({ "dev", "prod" }) // dev 동작
 	@Bean
 	CommandLineRunner init(ProductRepository productRepository) { // main이 실행될 때 반드시 한번 실행됨
 		return args -> {

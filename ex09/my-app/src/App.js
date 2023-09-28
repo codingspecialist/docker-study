@@ -1,18 +1,29 @@
 import './App.css';
 import Card from './components/Card';
+import { useEffect, useState } from "react";
 
 function App() {
+
+  const [products, setProducts] = useState([]);
+
+  async function onLoad() {
+    let response = await fetch("http://localhost:8080/api/products");
+    let responseBody = await response.json();
+    console.log("onLoad", responseBody);
+    setProducts(responseBody);
+  }
+
+  useEffect(() => {
+    onLoad();
+  }, []);
+
 
   return (
     <div>
       <h1>상품목록페이지</h1>
       <hr/>
       <div>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
+        {products.map((product) => <Card product={product}/>)}
       </div>
     </div>
   );
