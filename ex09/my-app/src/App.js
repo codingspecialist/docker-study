@@ -7,7 +7,7 @@ function App() {
   const [products, setProducts] = useState([]);
 
   async function onLoad() {
-    let response = await fetch("http://localhost:8080/api/products");
+    let response = await fetch("/api/products");
     let responseBody = await response.json();
     console.log("onLoad", responseBody);
     setProducts(responseBody);

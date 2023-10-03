@@ -1,3 +1,5 @@
+drop table if exists product_tb;
+
 CREATE TABLE product_tb (
   id INT AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(50),
