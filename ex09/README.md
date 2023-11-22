@@ -13,12 +13,15 @@ location에서 upstream이름으로 경로를 설정할 수 있습니다.
 proxy_pass 지시문은 /api/로 들어오는 모든 요청을 http://backend으로 전달합니다. 이때, Nginx는 원본 요청의 URL 경로를 그대로 유지합니다. 따라서 100.5.5.5:80/api/product로 들어오는 요청은 실제로 http://backend/api/product로 전달됩니다.
 
 ## api 주소를 지우고 싶다면?
+```txt
 location /api/ {
     proxy_set_header X-Original-URI $request_uri;  # 현재 요청의 원본 URI를 저장합니다.
     rewrite ^/api(/.*)$ $1 break;  # /api/를 제거합니다.
     proxy_pass http://backend;
     ...
 }
+```
+
 
 # DB데이터가 볼륨 설정으로 인해 계속 유지 된다면?
 docker-compose down -v
