@@ -1,3 +1,6 @@
+# Docker-compose 스프링, 리엑트, 디비, Nginx
+![img](/Screenshot_1.png)
+
 ## nginx dns 와 upstream
 
  Docker Compose를 사용하는 경우, 서비스명은 내부 DNS 레지스트리에 등록되며 컨테이너 간의 통신에 사용됩니다. 이것은 도커 컨테이너 내부에서 동작하는 것으로 인식되어, /etc/hosts 파일과 유사한 역할을 하게 됩니다.
