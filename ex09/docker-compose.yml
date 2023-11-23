@@ -10,7 +10,8 @@ services:
       - ./db/store:/var/lib/mysql
     networks:
       - network
-  server:
+
+  backend:
     build: 
       context: ./product
       dockerfile: Dockerfile
@@ -24,6 +25,18 @@ services:
       SPRING_DATASOURCE_DRIVER: com.mysql.cj.jdbc.Driver
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: root1234
+    networks:
+      - network
+
+  frontend:
+    build: 
+      context: ./my-app
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - 80:80
+    depends_on:
+      - backend
     networks:
       - network
 
